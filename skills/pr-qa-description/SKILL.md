@@ -1,6 +1,6 @@
 ---
 name: pr-qa-description
-description: Use whenever Codex prepares, creates, or edits a GitHub pull request description. Ground the description in the actual change and include the product, navigation, and E2E risk context needed to understand and test its behavior. Do not use for ordinary coding, planning, or review when no PR description is being authored.
+description: Use whenever the coding agent prepares, creates, or edits a GitHub pull request description. Ground the description in the actual change and include the product, navigation, and E2E risk context needed to understand and test its behavior. Do not use for ordinary coding, planning, or review when no PR description is being authored.
 ---
 
 # PR QA Description

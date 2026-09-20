@@ -1,0 +1,13 @@
+{
+  "name": "arch-pr-authoring",
+  "owner": {
+    "name": "Foothill Labs"
+  },
+  "plugins": [
+    {
+      "name": "arch-plugin",
+      "source": "./",
+      "description": "Helps coding agents write PR descriptions with the product context Arch needs."
+    }
+  ]
+}

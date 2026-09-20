@@ -1,14 +1,14 @@
 {
   "name": "arch-pr-authoring",
   "interface": {
-    "displayName": "Arch Pr Authoring"
+    "displayName": "Arch PR Authoring"
   },
   "plugins": [
     {
-      "name": "arch-codex-plugin",
+      "name": "arch-plugin",
       "source": {
         "source": "local",
-        "path": "./plugins/arch-codex-plugin"
+        "path": "./"
       },
       "policy": {
         "installation": "AVAILABLE",
