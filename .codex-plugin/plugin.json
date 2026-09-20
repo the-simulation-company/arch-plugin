@@ -1,13 +1,13 @@
 {
-  "name": "arch-codex-plugin",
-  "version": "0.1.4",
+  "name": "arch-plugin",
+  "version": "0.2.0",
   "description": "Writes PR descriptions with grounded product, navigation, and setup context.",
   "author": {
     "name": "Foothill Labs",
     "url": "https://foothill.sh"
   },
   "homepage": "https://foothill.sh",
-  "repository": "https://github.com/the-simulation-company/arch-codex-plugin",
+  "repository": "https://github.com/the-simulation-company/arch-plugin",
   "skills": "./skills/",
   "interface": {
     "displayName": "Arch PR Authoring",

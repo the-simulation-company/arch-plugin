@@ -1,0 +1,11 @@
+{
+  "name": "arch-plugin",
+  "description": "Writes PR descriptions with grounded product, navigation, and setup context.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Foothill Labs",
+    "url": "https://foothill.sh"
+  },
+  "homepage": "https://foothill.sh",
+  "repository": "https://github.com/the-simulation-company/arch-plugin"
+}
