@@ -35,6 +35,7 @@ Confirm that the legacy clone has no local changes, then replace it:
 ```bash
 git -C ~/.cursor/plugins/local/arch-cursor-plugin status --short
 rm -rf ~/.cursor/plugins/local/arch-cursor-plugin
+mkdir -p ~/.cursor/plugins/local
 git clone https://github.com/the-simulation-company/arch-plugin.git \
   ~/.cursor/plugins/local/arch-plugin
 ```
