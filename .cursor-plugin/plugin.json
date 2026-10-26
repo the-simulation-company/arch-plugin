@@ -1,6 +1,6 @@
 {
   "name": "arch-plugin",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Writes PR descriptions with grounded product, navigation, and setup context.",
   "author": {
     "name": "Foothill Labs"
