@@ -106,6 +106,12 @@ For changes without a supported browser-product consumer, it adds the exact `@ar
 
 Human-authored and template sections are preserved. The skill traces relevant repository evidence before asking the author for context that is genuinely unavailable.
 
+## Releasing changes
+
+Every PR increments the same stable `major.minor.patch` version in all four provider manifests. The required `Plugin version` check compares against the current base; update your branch and version if another release merges first. This applies to documentation changes too, so every merged snapshot has its own version.
+
+On a merge to `main`, the `Plugin release` workflow publishes that version as a GitHub release with generated notes. Verify the workflow and release before considering the change shipped. To recover a failed publication, fix the cause and rerun the failed job; an already-published tag is accepted only when it points to that workflow's commit.
+
 ## Repository layout
 
 The canonical skill lives in `skills/pr-qa-description/`. Provider manifests and standing-order adapters live at the repository root:
