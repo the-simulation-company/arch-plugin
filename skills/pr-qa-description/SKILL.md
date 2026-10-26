@@ -53,6 +53,8 @@ Use the following labels when they fit the available evidence and format. When r
 
 Omit irrelevant or empty labels. Exact UI copy, product rationale, or test evidence may be included when it materially clarifies a qualifying behavior change. Keep E2E considerations at the user-observable behavior level: identify the flow, state transition, permission boundary, integration boundary, or failure path worth validating. Do not turn them into detailed test scripts or a complete set of test goals; downstream goal creation decides the exact new or revised goals against the existing goal inventory.
 
+For staging testability, use the configured Arch test identity and available staging data/configuration to verify the changed flow's relevant role, organization access, feature gates, integrations, and records. Briefly distinguish what is testable now, what the browser can establish within its scope, and what is confirmed unavailable or still unverified, citing the evidence checked. Missing access to staging is uncertainty, not proof the feature is untestable; do not change permissions or configuration to make it testable or include credentials in the description.
+
 ## Context for downstream goal creation
 
 Give the downstream goal planner enough concrete evidence to design valuable behavior checks without asking it to invent product behavior:
