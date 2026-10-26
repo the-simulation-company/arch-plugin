@@ -44,8 +44,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ needs.version.outputs.tag }}
         run: |
-          if gh release view "$TAG" >/dev/null 2>&1; then
+          if git show-ref --verify --quiet "refs/tags/$TAG"; then
             test "$(git rev-parse "$TAG^{commit}")" = "$GITHUB_SHA"
-          else
+          fi
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
             gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" --generate-notes
           fi
