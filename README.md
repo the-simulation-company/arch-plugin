@@ -100,6 +100,8 @@ Then start a new session. See [Devin's update rollout docs](https://docs.devin.a
 
 The `pr-qa-description` skill asks the coding agent to ground the PR description in the diff, relevant tests, and repository template, then decide whether browser goal QA applies.
 
+After each push to an existing PR and before an authorized merge, it reconciles the description and QA context with the full current diff, updating stale claims and verification evidence while preserving human-authored and template sections. Accurate descriptions need no rewrite.
+
 For qualifying changes, it captures the user-visible change, affected pages and components, navigation, required setup or state, and evidenced behavioral variants and E2E risks.
 
 For changes without a supported browser-product consumer, it adds the exact `@arch skip qa` directive and a concise reason instead of inventing browser coverage.
