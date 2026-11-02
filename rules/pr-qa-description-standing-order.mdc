@@ -3,4 +3,4 @@ description: Keep PR descriptions current during authoring, pushes, and merge pr
 alwaysApply: true
 ---
 
-When preparing, creating, or editing a pull request description, pushing changes to an existing PR, or preparing an authorized merge, invoke the `pr-qa-description` skill. Keep the description and QA context aligned with the full current diff after each push and verify them against the final remote head before merging. This standing order does not apply to ordinary coding, planning, or review outside these PR lifecycle steps.
+When preparing, creating, or editing a pull request description, pushing changes to an existing PR, or preparing an authorized merge, invoke the `pr-qa-description` skill. Keep the PR description and QA context up to date as the change evolves, and confirm they describe the final version before merging. This standing order does not apply to ordinary coding, planning, or review outside these PR lifecycle steps.

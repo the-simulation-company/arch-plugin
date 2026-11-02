@@ -1,19 +1,19 @@
 ---
 name: pr-qa-description
-description: Use when preparing, creating, or editing a GitHub pull request description, pushing changes to an existing PR, or preparing to merge a PR. Ground the description in the actual change and include the product, navigation, and E2E risk context needed to understand and test its behavior. Keep the description and QA context aligned with the current PR head. Excludes ordinary coding, planning, or review without PR authoring, pushes, or merge preparation.
+description: Use when preparing, creating, or editing a GitHub pull request description, pushing changes to an existing PR, or preparing to merge a PR. Ground the description in the actual change and include the product, navigation, and E2E risk context needed to understand and test its behavior. Keep the description and QA context up to date as the change evolves. Excludes ordinary coding, planning, or review without PR authoring, pushes, or merge preparation.
 ---
 
 # PR QA Description
 
-Write or improve the pull request description using evidence from the actual diff, relevant tests, author-provided context, and the repository's PR template.
+Write or improve the pull request description to reflect the latest version of the change, using available evidence such as the implementation, diff, relevant tests, and author-provided context. Follow the repository's PR template.
 
 ## Keep the description current
 
-After each push to an existing PR, including review fixes, read its latest description and inspect the full current diff against its actual base (the parent branch for a stacked PR). Reconcile the description with the resulting change, not just the latest commit: refresh the summary, QA context, setup, risks, and verification evidence wherever they became stale. Remove claims about reverted behavior and distinguish completed checks from checks still pending. Reassess whether `@arch skip qa` applies as scope changes; remove it when browser goal QA now applies.
+After each push to an existing PR, including review fixes, read its latest description and bring it up to date with the latest version of the change: refresh the summary, QA context, setup, risks, and verification evidence wherever they became stale. Remove claims about reverted behavior and distinguish completed checks from checks still pending. Reassess whether `@arch skip qa` applies as scope changes; remove it when browser goal QA now applies.
 
-Preserve human-authored content and template sections while correcting stale claims; do not append a second QA block or a chronological update log. If the description still accurately describes the current head, leave it unchanged. Read back the saved description to verify the update.
+Preserve human-authored content and template sections while correcting stale claims; do not append a second QA block or a chronological update log. If the description still accurately describes the latest version of the change, leave it unchanged. Read back the saved description to verify the update.
 
-Before an authorized merge, repeat this check against the final remote head and confirm the description covers exactly what will merge. If the head changes again, recheck it. If the description cannot be updated or verified, report the blocker and do not merge. This check does not authorize merging.
+Before an authorized merge, confirm the description and QA context describe the final version of the change. If the change evolves again, refresh them as needed. If the description cannot be updated or verified, report the blocker and do not merge. This check does not authorize merging.
 
 ## Decide QA coverage
 
