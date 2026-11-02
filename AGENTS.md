@@ -1,6 +1,6 @@
 # PR description authoring
 
-When preparing, creating, or editing a pull request description, invoke the `pr-qa-description` skill before writing the description. This standing order applies only to PR-authoring work; it does not apply to ordinary coding, planning, or review.
+When preparing, creating, or editing a pull request description, pushing changes to an existing PR, or preparing an authorized merge, invoke the `pr-qa-description` skill. Keep the PR description and QA context up to date as the change evolves, and confirm they describe the final version before merging. This standing order does not apply to ordinary coding, planning, or review outside these PR lifecycle steps.
 
 # Releases
 
