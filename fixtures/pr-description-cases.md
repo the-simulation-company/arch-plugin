@@ -63,14 +63,14 @@ Use these cases to verify the installed plugin. Compare whether the resulting PR
 
 **Expected outcome:** The agent replaces invalid links with canonical URLs from GitHub, removes self and duplicate links, and re-verifies every member before marking any PR ready.
 
-## 11. Vendor admin console versus customer administration
+## 11. Product development tools versus customer administration
 
-**Evidence available:** An audit-software PR removes an extra rollout flag from a browser-based QA console used only by the vendor's platform administrators. Customer organization administrators cannot access it. No customer workflow changes and no internal QA scope has been requested.
+**Evidence available:** An audit-software PR removes an extra rollout flag from a browser-based QA console used by the engineers building that software. Customer organization administrators cannot access it. No customer workflow changes and no QA scope for the console has been requested.
 
-**Expected outcome:** The description uses `@arch skip qa`, explains that this is a vendor-internal QA tool, and keeps any console checks in ordinary verification. It does not propose customer browser coverage merely because the console has an admin role and a route. If the author explicitly requests testing this internal console, the description instead includes its actual platform-admin setup and changed behavior.
+**Expected outcome:** The description uses `@arch skip qa`, explains that this console supports building the product rather than using it as a customer, and keeps any console checks in ordinary verification. An admin role and a route alone do not justify customer coverage. If the author explicitly requests testing the console, the description instead includes its actual platform-admin setup and changed behavior.
 
-## 12. Mixed vendor and customer administration changes
+## 12. Mixed development-tool and customer-workflow changes
 
 **Evidence available:** The same PR also fixes saving a customer organization's notification preferences in Settings. Customer organization administrators can edit those preferences and reopen Settings to see the saved values.
 
-**Expected outcome:** The description does not use `@arch skip qa`. Its browser QA context covers saving and reopening the customer's preferences, while vendor-console checks remain in ordinary verification. Customer administration is not excluded merely because its users are administrators.
+**Expected outcome:** The description does not use `@arch skip qa`. Its browser QA context covers saving and reopening the customer's preferences, while engineering-console checks remain in ordinary verification. Customer administration is not excluded merely because its users are administrators. Likewise, a product sold to developers or operators still receives coverage for those customers' workflows.
