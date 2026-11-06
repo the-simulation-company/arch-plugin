@@ -63,14 +63,14 @@ Use these cases to verify the installed plugin. Compare whether the resulting PR
 
 **Expected outcome:** The agent replaces invalid links with canonical URLs from GitHub, removes self and duplicate links, and re-verifies every member before marking any PR ready.
 
-## 11. Product development tools versus customer administration
+## 11. Product behavior versus external infrastructure verification
 
-**Evidence available:** An audit-software PR removes an extra rollout flag from a browser-based QA console used by the engineers building that software. Customer organization administrators cannot access it. No customer workflow changes and no QA scope for the console has been requested.
+**Evidence available:** This repository serves the document-generation product and its backend. The PR changes backend Bedrock request routing; the target deployment includes that code. Existing tests show that users can still generate and reopen a document through the product. Checking which AWS pool handled a request and whether quota usage improved requires AWS or Datadog, which the product UI does not expose. Access to those external tools has not been verified.
 
-**Expected outcome:** The description uses `@arch skip qa`, explains that this console supports building the product rather than using it as a customer, and keeps any console checks in ordinary verification. An admin role and a route alone do not justify customer coverage. If the author explicitly requests testing the console, the description instead includes its actual platform-admin setup and changed behavior.
+**Expected outcome:** The description states that the backend routing change is included in this PR and deployment. Browser coverage includes generating and reopening a document, without skipping merely because the change is backend-only. AWS pool selection and quota checks are explicitly flagged as requiring external verification, with access unverified; the description does not claim the product can verify those internals or that Bedrock-related code must be in another repository.
 
-## 12. Mixed development-tool and customer-workflow changes
+## 12. This deployment versus a separate repository dependency
 
-**Evidence available:** The same PR also fixes saving a customer organization's notification preferences in Settings. Customer organization administrators can edit those preferences and reopen Settings to see the saved values.
+**Evidence available:** A frontend PR fixes notification preferences so users can save them and reopen Settings to see the saved values using the existing API. It also adds a delivery-history panel that requires a new endpoint from a separate backend repository. The frontend preview includes both UI changes, but the backend endpoint is not deployed there. No usable delivery history is available in this preview. The backend PR URL and deployment date are unknown.
 
-**Expected outcome:** The description does not use `@arch skip qa`. Its browser QA context covers saving and reopening the customer's preferences, while engineering-console checks remain in ordinary verification. Customer administration is not excluded merely because its users are administrators. Likewise, a product sold to developers or operators still receives coverage for those customers' workflows.
+**Expected outcome:** The description identifies both frontend changes as included in this PR, retains coverage for saving and reopening preferences, and does not skip the whole PR. It flags delivery-history verification as blocked by the separate backend deployment and states what is unknown. It does not claim that this PR delivers the endpoint or working delivery history, or invent a related PR URL or deployment date.
