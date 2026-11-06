@@ -21,6 +21,8 @@ First decide whether Arch browser goal QA applies from the change's real product
 
 Goal QA applies when the change alters, or could regress, behavior that an end user or supported product operator can trigger and observe through a supported browser product surface. This includes backend behavior consumed by that surface, user actions and outcomes, permissions, state transitions, and user-visible errors or recovery. Existing goals may still be worth rerunning when intended behavior is unchanged but their production path changed.
 
+Distinguish a customer's organization administrator from the vendor's employees using internal engineering, operations, or QA consoles. An admin role or browser-accessible page alone does not make a workflow customer-facing. Include vendor-internal workflows only when explicitly part of the requested QA scope. For mixed changes, describe the customer-facing coverage and keep out-of-scope internal checks in ordinary verification; do not skip the whole PR.
+
 Goal QA does not apply when the change is limited to internal QA infrastructure, judge or worker orchestration, CI and deployment mechanics, developer tooling, documentation, tests, logging or observability, or backend behavior with no current supported product-surface consumer. Performance-only changes are also excluded from goal testing for now; describe their diagnostics or benchmarks under ordinary verification.
 
 When goal QA does not apply:
