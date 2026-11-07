@@ -9,7 +9,7 @@ Write or improve the pull request description to reflect the latest version of t
 
 ## Keep the description current
 
-After each push to an existing PR, including review fixes, read its latest description and bring it up to date with the latest version of the change: refresh the summary, QA context, setup, risks, external-system boundaries, and verification evidence wherever they became stale. Remove claims about reverted behavior and distinguish completed checks from checks still pending. Reassess whether `@arch skip qa` applies as scope changes; remove it when browser goal QA now applies.
+After each push to an existing PR, including review fixes, read its latest description and bring it up to date with the latest version of the change: refresh the summary, QA context, setup, risks, and verification evidence wherever they became stale. Remove claims about reverted behavior and distinguish completed checks from checks still pending. Reassess whether `@arch skip qa` applies as scope changes; remove it when browser goal QA now applies.
 
 Preserve human-authored content and template sections while correcting stale claims; do not append a second QA block or a chronological update log. If the description still accurately describes the latest version of the change, leave it unchanged. Read back the saved description to verify the update.
 
@@ -30,6 +30,8 @@ When goal QA does not apply:
 - do not invent pages, navigation, user setup, goals, or E2E scenarios.
 
 Do not use the directive when a backend or infrastructure change has a current browser-visible consumer whose behavior could change.
+
+Explicitly flag infrastructure, internal-system, logging/observability, developer-tooling, and external-system impacts in the QA context or QA decision, including what Arch cannot access or verify. Related code in the repository does not mean the product browser exposes that behavior or Arch has access to the relevant system. Keep browser E2E considerations limited to evidenced product behavior, separating inaccessible or non-browser checks rather than implying Arch can perform them.
 
 For qualifying behavior changes, capture the useful product context:
 
@@ -58,25 +60,12 @@ Use the following labels when they fit the available evidence and format. When r
 - How to reach it:
 - Required setup/state:
 - Behavioral variants:
-- External-system impact and verification limits:
 - E2E considerations:
 ```
 
 Omit irrelevant or empty labels. Exact UI copy, product rationale, or test evidence may be included when it materially clarifies a qualifying behavior change. Keep E2E considerations at the user-observable behavior level: identify the flow, state transition, permission boundary, integration boundary, or failure path worth validating. Do not turn them into detailed test scripts or a complete set of test goals; downstream goal creation decides the exact new or revised goals against the existing goal inventory.
 
 Check testability in the actual staging, development, or QA environment. When Arch MCP is available, use `list_apps` to match the app and target URL, then `get_test_account` to identify the provisioned QA username. Look up that account in the actual environment being tested, using its configuration and database alongside the code to verify organization, roles, feature/integration access and relevant test data. Even identical usernames and passwords can belong to separate accounts in staging, dev or PR previews; do not carry permissions or data assumptions between environments or organizations. Carry the evidence into the PR's QA context so Arch can scope journeys without database access, distinguishing reachable coverage, setup the account can perform, and unavailable or unverified prerequisites. If MCP is absent, the tool fails or no username is returned, use available target-environment configuration, accounts and fixtures to assess likely coverage and state what is unverified for Arch's account. Do not require MCP to proceed, include credentials, or change permissions/configuration as part of this check.
-
-## External-system impact and verification limits
-
-Repository scope is not product-surface scope. Related code, SDKs, configuration, or telemetry in the repository do not establish that the product UI exposes the affected facts. When a change affects another repository, service, infrastructure resource, or third-party system, make that boundary explicit in the same QA section, even if no companion PR is being created or `@arch skip qa` applies:
-
-- Name the affected systems and the behavior or dependency crossing the boundary, grounded in the implementation or author-provided evidence. Distinguish changes made here from dependencies or downstream impacts elsewhere.
-- State what the product browser can trigger and observe, with the supporting route, component, or test evidence. Explicitly separate external or internal facts it cannot establish; a successful product flow does not prove the underlying provider, pool, quota usage, or infrastructure state.
-- Identify where those other facts must be verified, such as another repository's tests, an API, AWS, or Datadog. Keep those checks under ordinary verification, not product-browser E2E considerations. State any required access, configuration, or data and whether the check is completed, pending, or unavailable; do not imply access or results that have not been verified.
-
-For example, Bedrock routing changes may affect AWS pool selection and quota usage without exposing either in the product UI. Describe those impacts and the external verification needed; do not invent an infrastructure-monitoring page or turn an AWS/Datadog console check into a journey for the product under test. If the product really has a supported monitoring surface, cite that evidence and limit browser coverage to what it displays or lets users do.
-
-For mixed changes, retain goal QA for evidenced browser-visible behavior and isolate external-only assertions; do not skip the whole PR merely because part of it needs external verification. If an external dependency's contract or UI exposure cannot be established from accessible evidence, mark that specific boundary unverified and ask only for the missing information rather than assuming a browser journey exists. This impact context is separate from deployment coordination below: it is needed even for a single-repository PR and does not justify inventing related PR links.
 
 ## Context for downstream goal creation
 
