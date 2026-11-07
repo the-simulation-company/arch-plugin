@@ -62,3 +62,27 @@ Use these cases to verify the installed plugin. Compare whether the resulting PR
 **Evidence available:** A coordination block contains a guessed URL, a non-canonical URL, the current PR's own URL, or the same related URL twice.
 
 **Expected outcome:** The agent replaces invalid links with canonical URLs from GitHub, removes self and duplicate links, and re-verifies every member before marking any PR ready.
+
+## 11. Bedrock infrastructure with no product monitoring surface
+
+**Evidence available:** A single-repository PR changes Bedrock pool routing and quota telemetry. Related AWS SDK calls and Datadog metrics live in the product repository, but route, component, and test evidence shows no supported product UI for viewing pool selection or quota usage. Those facts require AWS or Datadog access, which has not been verified for the QA account. No browser-visible consumer's behavior is affected.
+
+**Expected outcome:** The description names the AWS/Bedrock and Datadog impacts, distinguishes code changed here from externally observed infrastructure state, and states that the product browser cannot verify pool selection or quota usage. It identifies the external verification and unverified access without claiming checks passed. It includes `@arch skip qa` with a concise reason and invents neither a monitoring journey nor a deployment coordination block. The skip directive does not replace the external-impact context.
+
+## 12. Mixed product flow and external infrastructure impact
+
+**Evidence available:** A Bedrock fallback change affects a chat flow reached through **Projects → Open project → Chat**, with tests covering a successful answer and the product's visible failure state. The selected AWS pool and quota consumption are observable only through provider tooling or telemetry, not through that chat UI.
+
+**Expected outcome:** The description retains browser goal QA for the evidenced chat outcomes and supplies their navigation and setup. In the same QA block it separates those outcomes from pool selection and quota usage, naming the external verification needed for the latter under ordinary verification. It does not treat receiving an answer as proof of a particular pool, invent product monitoring controls, or skip the entire PR.
+
+## 13. Evidenced product monitoring surface
+
+**Evidence available:** A PR changes quota data returned by an external provider. The supported `/admin/usage` page displays the reported usage and an unavailable-data state; route and permission tests show how organization administrators reach it. The UI does not show which AWS pool served a request. API contract tests passed, but a live provider comparison has not been run.
+
+**Expected outcome:** The description includes browser coverage for administrators viewing reported usage and the unavailable-data state, grounded in that real product surface. It keeps AWS pool selection outside browser coverage, records the passed contract tests separately from the pending live comparison, and does not claim displaying usage proves its accuracy against the provider. It does not skip goal QA merely because an external service is involved.
+
+## 14. Impact outside the repository with incomplete evidence
+
+**Evidence available:** A PR changes an API payload consumed by a separate worker repository. Local tests establish the new payload, but the worker repository and its deployment configuration are inaccessible. No companion PR was created, and the evidence does not establish whether the worker's result is exposed in the product UI.
+
+**Expected outcome:** The description names the worker dependency and payload boundary, distinguishes the local change from its unverified downstream impact, and identifies the missing consumer contract, deployment, and UI-exposure evidence. It asks a focused author question rather than inventing a worker page, assuming downstream compatibility, or asserting that browser QA is definitively applicable or inapplicable. It does not invent a related PR URL or a deployment coordination block.

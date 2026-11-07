@@ -102,6 +102,8 @@ The `pr-qa-description` skill asks the coding agent to ground the PR description
 
 For qualifying changes, it captures the user-visible change, affected pages and components, navigation, required setup or state, and evidenced behavioral variants and E2E risks.
 
+When impacts cross into other repositories, services, infrastructure, or third-party systems, it separates what the product browser can verify from facts that require external checks. Related code in the repository is not evidence of a product monitoring UI; mixed changes retain browser coverage for supported product behavior without inventing external-system journeys.
+
 For changes without a supported browser-product consumer, it adds the exact `@arch skip qa` directive and a concise reason instead of inventing browser coverage.
 
 Human-authored and template sections are preserved. The skill traces relevant repository evidence before asking the author for context that is genuinely unavailable.
