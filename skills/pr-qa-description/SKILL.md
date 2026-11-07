@@ -19,7 +19,7 @@ Before an authorized merge, confirm the description and QA context describe the 
 
 First decide whether Arch browser goal QA applies from the change's real production consumers. Do not decide from change size or from a frontend-versus-backend label alone.
 
-Goal QA applies when the change alters, or could regress, behavior that an end user or supported product operator can trigger and observe through a supported browser product surface. This includes backend behavior consumed by that surface, user actions and outcomes, permissions, state transitions, and user-visible errors or recovery. Existing goals may still be worth rerunning when intended behavior is unchanged but their production path changed.
+Goal QA applies when the change alters, or could regress, behavior that an end user or supported product operator can trigger and observe through a supported browser surface of the product under test. This includes backend behavior consumed by that surface, user actions and outcomes, permissions, state transitions, and user-visible errors or recovery. Existing goals may still be worth rerunning when intended behavior is unchanged but their production path changed.
 
 Goal QA does not apply when the change is limited to internal QA infrastructure, judge or worker orchestration, CI and deployment mechanics, developer tooling, documentation, tests, logging or observability, or backend behavior with no current supported product-surface consumer. Performance-only changes are also excluded from goal testing for now; describe their diagnostics or benchmarks under ordinary verification.
 
@@ -30,6 +30,8 @@ When goal QA does not apply:
 - do not invent pages, navigation, user setup, goals, or E2E scenarios.
 
 Do not use the directive when a backend or infrastructure change has a current browser-visible consumer whose behavior could change.
+
+Explicitly flag infrastructure, internal-system, logging/observability, developer-tooling, and external-system impacts in the QA context or QA decision, including what Arch cannot access or verify. Related code in the repository does not mean the product browser exposes that behavior or Arch has access to the relevant system. Keep browser E2E considerations limited to evidenced product behavior, separating inaccessible or non-browser checks rather than implying Arch can perform them.
 
 For qualifying behavior changes, capture the useful product context:
 
